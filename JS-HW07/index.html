@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Red+Hat+Display:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <title>JS HW</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="./styles/main.min.css">
+</head>
+
+<body>
+    <div class="display-9 fw-bold container toStart"><a href="/index.html">← Back to Start</a>
+    </div>
+    <div class="container" ></div>
+    <h2 class="display-6 fw-bold" >JS Homework 07: DOM</h2>
+        <div class="btn-wrapper" id="list">
+            <button onclick="playlist('#list')" class="btn btn-primary d-inline-flex align-items-center" type="button" id="playlist"
+                >show playlist</button>
+            <button onclick="toggleModal(event)" class="btn btn-primary d-inline-flex align-items-center" type="button" data-modal-open>open modal</button>
+            <button onclick="toggleLights(event)" class="btn btn-primary d-inline-flex align-items-center" type="button" data-light>show traffic
+                lights</button>
+        </div>
+
+    </div>
+
+    <div class="backdrop is-hidden" data-modal>
+        <div class="modalWindow">
+            <p class="modal-title" id="modalContent">Playlist</p>
+            <button type="button" class="close-btn" data-modal-close onclick="toggleModal(event)"><svg class="close-icon"
+                    width="18" height="18">
+                    <use href="./images/icons.svg#icon-close"></use>
+                </svg></button>
+            <p class="modal-text">Для закриття модільного вікна натисніть хрестик або кнопку "Закрити"</p>
+            <button type="buton" class="submit-btn" data-modal-close onclick="toggleModal(event)">Закрити</button>
+        </div>
+    </div>
+
+    <div class="traffic-lights_wrapper is-hidden" id="trafficLights">
+            <div class="light-btn">
+            </div>
+            <div class="light-btn">
+            </div>
+            <div class="light-btn">
+            </div>
+            <button type="button" class="submit-btn" id="changeLightBtn" onclick="switchLight(event)">зміна кольору
+            </button>
+        </div>
+    </div>
+
+    <script src="./js/hw_07.js"></script>
+</body>
+
+</html>

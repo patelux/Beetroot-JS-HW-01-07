@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Red+Hat+Display:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <title>JS HW</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="./styles/main.min.css">
+</head>
+
+<body>
+    <div class="display-9 fw-bold container toStart"><a href="/index.html">← Back to Start</a>
+    </div>
+    <h2 class="display-6 fw-bold">JS Homework 01: introduction to JS</h2>
+    <div class="container btn-wrapper">
+        <button onclick="getUserName()" class="btn btn-primary d-inline-flex align-items-center" type="button">
+            User Name
+        </button>
+        <button onclick="getUserAge()" class="btn btn-primary d-inline-flex align-items-center" type="button">User
+            Age</button>
+        <button onclick="getSquarePerimetr()" class="btn btn-primary d-inline-flex align-items-center"
+            type="button">Square Perimetr</button>
+        <button onclick="getCircleArea()" class="btn btn-primary d-inline-flex align-items-center" type="button">Circle
+            Area</button>
+        <button onclick="getTravelSpeed()" class="btn btn-primary d-inline-flex align-items-center" type="button">Travel
+            Speed Limit</button>
+        <button onclick="getCurrencyAmount()" class="btn btn-primary d-inline-flex align-items-center"
+            type="button">Currency Exchange</button>
+    </div>
+    <h2 class="display-6 fw-bold">JS Homework 02: math methods</h2>
+    <div class="container btn-wrapper">
+        <button onclick="augmentFloat()" class="btn btn-primary d-inline-flex align-items-center" type="button">Math methods</button>
+        <button onclick="flashDriveAmount()" class="btn btn-primary d-inline-flex align-items-center" type="button">Files Amount</button>
+        <button onclick="chocolateAmount()" class="btn btn-primary d-inline-flex align-items-center"
+            type="button">Chocolate Amount</button>
+        <button onclick="reverseNumber()" class="btn btn-primary d-inline-flex align-items-center" type="button">Reversed Number</button>
+        <button onclick="loanInterest()" class="btn btn-primary d-inline-flex align-items-center" type="button">Deposit</button>
+    </div>
+        <h2 class="display-6 fw-bold">JS Homework 03: Cicles and conditions</h2>
+        <div class="container btn-wrapper">
+        <button onclick="checkAgeRate()" class="btn btn-primary d-inline-flex align-items-center" type="button">Check Age Rate</button>
+        <button onclick="specSymbols()" class="btn btn-primary d-inline-flex align-items-center" type="button">Specified Symbols</button>
+        <button onclick="amountOfRange()" class="btn btn-primary d-inline-flex align-items-center" type="button">Amount of Range</button>
+        <button onclick="denominatorInRange()" class="btn btn-primary d-inline-flex align-items-center" type="button">Denominator in Range</button>
+        <button onclick="denominatorsOfNumber()" class="btn btn-primary d-inline-flex align-items-center" type="button">Denominators of Number</button>
+        <button onclick="palindrom()" class="btn btn-primary d-inline-flex align-items-center" type="button">Palindrom</button>
+        <button onclick="sumWithOutDiscont()" class="btn btn-primary d-inline-flex align-items-center" type="button">Total without Discont</button>
+        <button onclick="statisticsCount()" class="btn btn-primary d-inline-flex align-items-center" type="button">Statistics</button>
+        <button onclick="dayOfWeek()" class="btn btn-primary d-inline-flex align-items-center" type="button">Day Of Week</button>
+        <button onclick="guessNumber()" class="btn btn-primary d-inline-flex align-items-center" type="button">Guess Number</button>
+        <button onclick="multiplicationTable()" class="btn btn-primary d-inline-flex align-items-center" type="button">Multiplication Table</button>
+        <button onclick="dayTomorrow()" class="btn btn-primary d-inline-flex align-items-center" type="button">Tomorrow day</button>
+    </div>
+    <h2 class="display-6 fw-bold">JS Homework 04: functions</h2>  
+    <div class="container btn-wrapper">
+        <button onclick="countArgumentsAlert()" class="btn btn-primary d-inline-flex align-items-center" type="button">count Arguments</button>
+        <button onclick="checkNumbersAlert()" class="btn btn-primary d-inline-flex align-items-center" type="button">Check Numbers</button>
+        <button onclick="countFactorialAlert()" class="btn btn-primary d-inline-flex align-items-center" type="button">count factorial</button>
+        <button onclick="concatNumbersAlert()" class="btn btn-primary d-inline-flex align-items-center" type="button">concat Numbers</button>
+        <button onclick="getSquareAlert()" class="btn btn-primary d-inline-flex align-items-center" type="button">square</button>
+        <button onclick="purfectNumberAlert()" class="btn btn-primary d-inline-flex align-items-center" type="button">purfect Number</button>
+        <button onclick="purfectNumbersAlert()" class="btn btn-primary d-inline-flex align-items-center" type="button">range of purfect numbers</button>
+    </div>    
+    <h2 class="display-6 fw-bold">JS Homework 05: objects</h2>  
+    <div class="container btn-wrapper">
+        <button onclick="carInfoAlert()" class="btn btn-primary d-inline-flex align-items-center" type="button">car properties</button>
+        <button onclick=" timeObjectAlert()" class="btn btn-primary d-inline-flex align-items-center" type="button"> time</button>
+        <button onclick="fractionAlert()" class="btn btn-primary d-inline-flex align-items-center" type="button">fraction</button>
+    </div>
+    <h2 class="display-6 fw-bold">JS Homework 06: array methods</h2> 
+    <div class="container btn-wrapper">
+        <button onclick="listOfProductsAlert()" class="btn btn-primary d-inline-flex align-items-center" type="button">product cart</button>
+        <button onclick="addOrDeleteProductsAlert()" class="btn btn-primary d-inline-flex align-items-center" type="button">add or delete from cart</button>
+        <button onclick="sumAndSortAlert()" class="btn btn-primary d-inline-flex align-items-center" type="button">summary product cart</button>
+    </div>
+
+    <script src="./js/main.js"></script>
+    <script src="./js/hw_03.js"></script>
+    <script src="./js/hw_04.js"></script>
+    <script src="./js/hw_05.js"></script>
+    <script src="./js/hw_06.js"></script>
+
+</body>
+
+</html>
