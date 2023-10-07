@@ -1,0 +1,15 @@
+@import './base/reset';
+@import './utils/variables';
+
+@import './components/container';
+
+// BODY-------------------------
+
+h2.display-6.fw-bold{
+    text-align: center;
+    text-transform: capitalize;
+}
+
+th:hover{
+    background-color: tomato;
+}
