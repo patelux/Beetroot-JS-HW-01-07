@@ -129,3 +129,18 @@ function toggleLights(e) {
     }
 
 }
+
+
+// кастомні події перевірити як працює, додати форму та два інпути з логином та паролем
+
+document.getElementById('login').addEventListener('input', function() {
+    if(this.value.length > 5) {
+        let loginAddedEvent = new Event('loginAdded');
+
+        this.dispatchEvent(loginAddedEvent);
+    }
+});
+
+document.getElementById('password').addEventListener('loginAdded', function() {
+    this.removeAttribute('disabled')
+});

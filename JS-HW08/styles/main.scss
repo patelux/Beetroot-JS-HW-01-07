@@ -1,0 +1,32 @@
+@import './base/reset';
+@import './utils/variables';
+
+@import './components/container';
+
+// BODY-------------------------
+
+h2.display-6.fw-bold{
+    text-align: center;
+    text-transform: capitalize;
+}
+
+#editor{
+font-family: 'Lato', sans-serif;
+font-size: 24px;
+font-weight: 400;
+text-transform: none;
+
+min-width: 500px;
+width: 60%;
+height: auto;
+white-space: pre-wrap;
+word-wrap: break-word;
+resize: vertical;
+padding: 15px;
+&:focus
+{border: 1px solid tomato;}
+}
+
+textarea {
+    resize: vertical;
+  }
