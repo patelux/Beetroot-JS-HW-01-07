@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="./styles/main.min.css" />
+
+  <title>Jquery Slider</title>
+
+  <!-- <link rel="icon" href="./assets/images/favicon.png"> -->
+</head>
+
+<body>
+  <div class="page_wrapper">
+    <header class="header">
+      <div class="container">
+        <nav class="main_nav">
+          <div class="logo-wrapper">
+            <a href="#" class="logo_link">
+              <img src="./assets/images/logo.svg" alt="logo" class="logo">
+            </a>
+          </div>
+
+          <div class="nav-list_wrapper">
+            <ul class="nav_list">
+              <li class="nav_item">
+                <a class="nav_link current" href="#">home</a>
+              </li>
+              <li class="nav_item">
+                <a class="nav_link" href="#">catalog</a>
+              </li>
+              <li class="nav_item">
+                <a class="nav_link" href="#">news</a>
+              </li>
+              <li class="nav_item">
+                <a class="nav_link" href=".#">contacts</a>
+              </li>
+            </ul>
+          </div>
+          
+            <div class="btn-wrapper">
+              <button type="button" class="search_btn">
+                <svg class="icon"><use xlink:href="./assets/images/icons.svg#icon-search"></use></svg>
+              </button>
+              <button type="button" class="profile_btn">
+                <svg class="icon"><use xlink:href="./assets/images/icons.svg#icon-profile"></use></svg>
+              </button>
+               <button class="hamburger hamburger--spin" type="button" onclick="toggleMenu(event)">
+            <span class="hamburger-box">
+              <span class="hamburger-inner"></span>
+            </span>
+          </button>
+            </div>
+         
+        </nav>
+      </div>
+    </header>
+
+    <main class="main">
+      <!-- hero section -->
+      <section class="hero">
+        <div class="container">
+          <div class="hero-wrapper">
+            <h1 class="section-title">
+            Find your own style
+            </h1>
+            <button class="btn-large-light" type="button">view more</button>
+          </div>
+          
+        </div>
+      </section>
+
+      <!-- SECTION PROMISES -->
+      <!-- <section class="promises">
+        <div class="container">
+          <div class="promises-wrapper">
+            <ul class="promises_list">
+              <li class="promises_item">
+                <h4 class="section-subtitle">
+                  On-Exchange Trading
+                </h4>
+                <p class="section-description">
+                  Instant
+                </p>
+                <p class="section-description">
+                  Passive Inventory earns fees
+                </p>
+              </li>
+              <li class="promises_item">
+                <h4 class="section-subtitle">
+                  On-Chain Swaps
+                </h4>
+                <p class="section-description">
+                  Low Counterparty risk
+                </p>
+                <p class="section-description">
+                  Direct transfers
+                </p>
+              </li>
+              <li class="promises_item">
+                <h4 class="section-subtitle">
+                  Time Settlement Swaps
+                </h4>
+                <p class="section-description">
+                  LBTC / Lightning and other sidechain swaps
+                </p>
+              </li>
+              <li class="promises_item">
+                <button class="promises-btn btn-large-coral">
+                  join now
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section> -->
+      <!-- SECTION REVIEWS -->
+      <!-- <section class="reviews">
+        <div class="container">
+          <h3 class="section-title">
+            
+          </h3>
+          <p class="section-description">
+
+          </p>
+          <ul class="reviews_list">
+            <li class="reviews_item">
+              <p class="reviews-description">
+
+              </p>
+              <p class="reviews-subtext">
+              
+              </p>
+            </li>
+            <li class="reviews_item">
+              <p class="reviews-description">
+                
+              </p>
+              <p class="reviews-subtext">
+               
+              </p>
+            </li>
+            <li class="reviews_item">
+              <p class="reviews-description">
+                
+              </p>
+              <p class="reviews-subtext">
+         
+              </p>
+            </li>
+          </ul>
+        </div>
+      </section> -->
+
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer_wrapper">
+          <div class="copyright-box">
+            <p class="footer-copyright">© 2020 Solisgroup. All Rights Reserved.</p>
+          </div>
+
+        </div>
+      </div>
+    </footer>
+  </div>
+
+
+</body>
+
+</html>
