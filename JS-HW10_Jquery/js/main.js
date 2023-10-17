@@ -85,7 +85,7 @@ $('#btn-current').on('click', function(event) {
 //       breakpoint: 1199,
 //       settings: {
 //         slidesToShow: 5,
-//         slidesToScroll: 3,
+//         slidesToScroll: 1,
 //         infinite: true,
 //         dots: true
 //       }
@@ -94,19 +94,58 @@ $('#btn-current').on('click', function(event) {
 //       breakpoint: 767,
 //       settings: {
 //         slidesToShow: 3,
-//         slidesToScroll: 1
+//         slidesToScroll: 1,
+//         arrows: false
 //       }
 //     },
 //     {
 //       breakpoint: 320,
 //       settings: {
 //         slidesToShow: 1,
-//         slidesToScroll: 1
+//         slidesToScroll: 1,
+//         arrows: false
 //       }
 //     }
 //   ]
 // });
-
+$(function(){
+  $('.partners-list').slick({
+    vertical: false,
+            arrows: true,
+            dots: true,
+            infinite: true,
+            speed: 300,
+            slidesToShow: 5,
+            slidesToScroll: 1,
+      responsive: [
+        {
+          breakpoint: 1199,
+          settings: {
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            infinite: true,
+            dots: true
+          }
+        },
+        {
+          breakpoint: 767,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            arrows: false
+          }
+        },
+        {
+          breakpoint: 320,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            arrows: false
+          }
+        }
+      ]
+  });
+});
 
 })
 
