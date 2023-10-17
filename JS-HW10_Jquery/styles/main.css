@@ -1065,19 +1065,7 @@ body.fixed {
   }
 }
 .partners .container {
-  font-family: Arial, Helvetica, sans-serif;
-  color: #141414;
-  margin: 0 auto;
-  width: 90%;
-  max-width: 1440px;
-  padding: 50px 0;
   text-align: center;
-}
-
-img {
-  width: 100%;
-  max-width: 400px;
-  margin: 0 auto;
 }
 
 .slick-dots li button:before {
@@ -1111,13 +1099,6 @@ img {
 
 .slick-prev {
   left: -45px;
-}
-
-@media screen and (min-width: 240px) and (max-width: 767px) {
-  .slick-prev, .slick-next, .slick-prev:before,
-.slick-next:before {
-    opacity: 0;
-  }
 }
 
 .slick-prev:before {
