@@ -7,7 +7,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
-
+  <link rel="stylesheet" href="./styles/slick.css" />
+  <link rel="stylesheet" href="./styles/slick-theme.css" />
+  <link rel="stylesheet" href="./styles/components/hamburgers.css" />
   <link rel="stylesheet" href="./styles/main.min.css" />
 
   <title>Jquery Slider</title>
@@ -42,135 +44,267 @@
               </li>
             </ul>
           </div>
-          
-            <div class="btn-wrapper">
-              <button type="button" class="search_btn">
-                <svg class="icon"><use xlink:href="./assets/images/icons.svg#icon-search"></use></svg>
-              </button>
-              <button type="button" class="profile_btn">
-                <svg class="icon"><use xlink:href="./assets/images/icons.svg#icon-profile"></use></svg>
-              </button>
-               <button class="hamburger hamburger--spin" type="button" onclick="toggleMenu(event)">
-            <span class="hamburger-box">
-              <span class="hamburger-inner"></span>
-            </span>
-          </button>
-            </div>
-         
+
+          <div class="btn-wrapper">
+            <button type="button" class="search_btn">
+              <svg class="icon">
+                <use xlink:href="./assets/images/icons.svg#icon-search"></use>
+              </svg>
+            </button>
+            <button type="button" class="profile_btn">
+              <svg class="icon">
+                <use xlink:href="./assets/images/icons.svg#icon-profile"></use>
+              </svg>
+            </button>
+            <button class="hamburger hamburger--spin" type="button">
+              <span class="hamburger-box">
+                <span class="hamburger-inner"></span>
+              </span>
+            </button>
+          </div>
+
         </nav>
       </div>
     </header>
 
     <main class="main">
       <!-- hero section -->
-      <section class="hero">
+      <div class="slider_hero">
+        <div class="slide-item">
+        <section class="hero">
         <div class="container">
           <div class="hero-wrapper">
             <h1 class="section-title">
-            Find your own style
+              Find your own style
             </h1>
             <button class="btn-large-light" type="button">view more</button>
           </div>
-          
+        </div>
+      </section>
+        </div>
+
+      </div>
+      
+
+      <!-- SECTION PRODUCTS -->
+      <section class="products">
+        <div class="container">
+          <div class="products-wrapper">
+            <h2 class="section-title">new arrivals</h2>
+            <div class="products-list_wrapper">
+              <div class="products-list">
+                <div class="products-items">
+                  <div class="product-image_wrapper">
+                    <img src="./assets/images/photoGuitar1.png" alt="alvar">
+                  </div>
+                  <p class="products-description">Hagstrom Alvar Limited Edition</p>
+                  <p class="products-price">€2.990,00</p>
+                </div>
+                <div class="products-items">
+                  <div class="product-image_wrapper">
+                    <img src="./assets/images/photoGuitar2.png" alt="tremar">
+                  </div>
+                  <p class="products-description">Hagstrom Tremar Viking Deluxe Cloudy Seas</p>
+                  <p class="products-price">€1.300,00</p>
+                </div>
+                <div class="products-items sold">
+                  <div class="product-image_wrapper">
+                    <img src="./assets/images/photoGuitar3.png" alt="gibson">
+                  </div>
+                  <p class="products-description">Gibson Les Paul Standard 60s</p>
+                  <p class="products-price">€3.749,00</p>
+                </div>
+                <div class="products-items">
+                  <div class="product-image_wrapper">
+                    <img src="./assets/images/photoGuitar4.png" alt="suhr">
+                  </div>
+                  <p class="products-description">Suhr Standard Plus Trans Blue Denim</p>
+                  <p class="products-price">€3.449,00</p>
+                </div>
+                <div class="products-items">
+                  <div class="product-image_wrapper">
+                    <img src="./assets/images/photoGuitar5.png" alt="fender">
+                  </div>
+                  <p class="products-description">Fender Telecaster Black Paisley Limited Edition</p>
+                  <p class="products-price">€1.499,00</p>
+                </div>
+              </div>
+              <!-- <div class="arrow-left">
+                <svg class="arrow">
+                  <use xlink:href="./assets/images/icons.svg#icon-prev"></use>
+                </svg>
+              </div> -->
+              <!-- <div class="arrow-right">
+                <svg class="arrow">
+                  <use xlink:href="./assets/images/icons.svg#icon-next"></use>
+                </svg>
+              </div> -->
+            </div>
+
+            <div class="products-btn-wrapper">
+              <button class="btn-large-dark" type="button">view more</button>
+            </div>
+
+          </div>
         </div>
       </section>
 
-      <!-- SECTION PROMISES -->
-      <!-- <section class="promises">
+      <!-- SECTION PARTNERS -->
+      <section class="partners">
         <div class="container">
-          <div class="promises-wrapper">
-            <ul class="promises_list">
-              <li class="promises_item">
-                <h4 class="section-subtitle">
-                  On-Exchange Trading
-                </h4>
-                <p class="section-description">
-                  Instant
-                </p>
-                <p class="section-description">
-                  Passive Inventory earns fees
-                </p>
-              </li>
-              <li class="promises_item">
-                <h4 class="section-subtitle">
-                  On-Chain Swaps
-                </h4>
-                <p class="section-description">
-                  Low Counterparty risk
-                </p>
-                <p class="section-description">
-                  Direct transfers
-                </p>
-              </li>
-              <li class="promises_item">
-                <h4 class="section-subtitle">
-                  Time Settlement Swaps
-                </h4>
-                <p class="section-description">
-                  LBTC / Lightning and other sidechain swaps
-                </p>
-              </li>
-              <li class="promises_item">
-                <button class="promises-btn btn-large-coral">
-                  join now
-                </button>
-              </li>
-            </ul>
+          <div class="partners-wrapper">
+
+            <h2 class="section-title">our partners</h2>
+            <div class="partners-list_wrapper">
+              <ul class="partners-list">
+                <li class="partners-items">
+                  <div class="partners-image_wrapper">
+                    <img src="./assets/images/epiphone.svg" alt="epiphone">
+                  </div>
+                </li>
+                <li class="partners-items">
+                  <div class="partners-image_wrapper">
+                    <img src="./assets/images/esp.svg" alt="esp">
+                  </div>
+                </li>
+                <li class="partners-items">
+                  <div class="partners-image_wrapper">
+                    <img src="./assets/images/gibson.svg" alt="gibsoun">
+                  </div>
+                </li>
+                <li class="partners-items">
+                  <div class="partners-image_wrapper">
+                    <img src="./assets/images/engl.svg" alt="engl">
+                  </div>
+                </li>
+                <li class="partners-items">
+                  <div class="partners-image_wrapper">
+                    <img src="./assets/images/roland.svg" alt="roland">
+                </li>
+                <li class="partners-items">
+                  <div class="partners-image_wrapper">
+                    <img src="./assets/images/fender.svg" alt="fender">
+                </li>
+                <li class="partners-items">
+                  <div class="partners-image_wrapper">
+                    <img src="./assets/images/peavey.svg" alt="peavey   ">
+                </li>
+                <li class="partners-items">
+                  <div class="partners-image_wrapper">
+                    <img src="./assets/images/marshal.svg" alt="marshal">
+                </li>
+                <li class="partners-items">
+                  <div class="partners-image_wrapper">
+                    <img src="./assets/images/orange.svg" alt="orange">
+                </li>
+              </ul>
+              <div class="arrow-left">
+                <svg class="arrow">
+                  <use xlink:href="./assets/images/icons.svg#icon-prev"></use>
+                </svg>
+              </div>
+              <div class="arrow-right">
+                <svg class="arrow">
+                  <use xlink:href="./assets/images/icons.svg#icon-next"></use>
+                </svg>
+              </div>
+            </div>
+
           </div>
         </div>
-      </section> -->
-      <!-- SECTION REVIEWS -->
-      <!-- <section class="reviews">
-        <div class="container">
-          <h3 class="section-title">
-            
-          </h3>
-          <p class="section-description">
-
-          </p>
-          <ul class="reviews_list">
-            <li class="reviews_item">
-              <p class="reviews-description">
-
-              </p>
-              <p class="reviews-subtext">
-              
-              </p>
-            </li>
-            <li class="reviews_item">
-              <p class="reviews-description">
-                
-              </p>
-              <p class="reviews-subtext">
-               
-              </p>
-            </li>
-            <li class="reviews_item">
-              <p class="reviews-description">
-                
-              </p>
-              <p class="reviews-subtext">
-         
-              </p>
-            </li>
-          </ul>
-        </div>
-      </section> -->
+      </section>
 
     </main>
 
     <footer class="footer">
       <div class="container">
+
         <div class="footer_wrapper">
-          <div class="copyright-box">
-            <p class="footer-copyright">© 2020 Solisgroup. All Rights Reserved.</p>
+          <div class="logo-wrapper">
+            <a href="#" class="logo_link">
+              <img src="./assets/images/logo_small.svg" alt="logo" class="logo">
+            </a>
+          </div>
+
+          <div class="nav-list_wrapper">
+            <ul class="nav_list">
+              <li class="nav_item">
+                <a class="nav_link current" href="#">home</a>
+              </li>
+              <li class="nav_item">
+                <a class="nav_link" href="#">catalog</a>
+              </li>
+              <li class="nav_item">
+                <a class="nav_link" href="#">news</a>
+              </li>
+              <li class="nav_item">
+                <a class="nav_link" href=".#">contacts</a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="contacts-wrapper">
+            <p class="contact-title">
+              contact us
+            </p>
+            <div class="social-links-wrapper">
+              <ul class="social-link-list">
+                <li class="social-link-item">
+                  <a href="#" aria-label="instagram" class="social-link">
+                    <svg class="icon-social-link" height="20">
+                      <use class="icon-social" href="./assets/images/icons.svg#icon-instagram"></use>
+                    </svg>
+                  </a>
+                </li>
+                <li class="social-link-item">
+                  <a href="#" aria-label="facebook" class="social-link">
+                    <svg class="icon-social-link" height="20">
+                      <use class="icon-social" href="./assets/images/icons.svg#icon-facebook"></use>
+                    </svg>
+                  </a>
+                </li>
+                <li class="social-link-item">
+                  <a href="#" aria-label="pintest" class="social-link">
+                    <svg class="icon-social-link" height="20">
+                      <use class="icon-social" href="./assets/images/icons.svg#icon-pinterest"></use>
+                    </svg>
+                  </a>
+                </li>
+                <li class="social-link-item">
+                  <a href="#" aria-label="twitter" class="social-link">
+                    <svg class="icon-social-link" height="20">
+                      <use class="icon-social" href="./assets/images/icons.svg#icon-twitter"></use>
+                    </svg>
+                  </a>
+                </li>
+                <li class="social-link-item">
+                  <a href="#" aria-label="linkedin" class="social-link">
+                    <svg class="icon-social-link" height="20">
+                      <use class="icon-social" href="./assets/images/icons.svg#icon-youtube"></use>
+                    </svg>
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <p class="contact_tel">
+              <a href="tel:+8003004040" class="contacts_link_tel">
+                800 300 4040
+              </a>
+            </p>
           </div>
 
         </div>
+
+        <div class="copyright-box">
+            <p class="footer-copyright">© 2020 Solisgroup. All Rights Reserved.</p>
+          </div>
       </div>
     </footer>
-  </div>
+  </div> 
 
+  <script src="./js/jquery.js"></script>
+  <script src="./js/slick.min.js"></script>
+  <script src="./js/main.js"></script>
 
 </body>
 
