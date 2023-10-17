@@ -110,7 +110,7 @@ $('#btn-current').on('click', function(event) {
 // });
 $(function(){
   $('.partners-list').slick({
-    vertical: false,
+            vertical: false,
             arrows: true,
             dots: true,
             infinite: true,
