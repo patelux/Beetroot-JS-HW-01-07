@@ -144,6 +144,9 @@ body.fixed{
 
 // MAIN CONTENT------------------
 // SECTION HERO
+.hero{
+    position: relative;
+}
 .slide-item .hero{
     height: 700px;
     background-image:linear-gradient(180deg, rgba(0, 0, 0, 0.84) 0%, rgba(217, 217, 217, 0.00) 100%), url(../assets/images/heroImage1_desktop-2x.jpg);
@@ -215,12 +218,40 @@ body.fixed{
 .btn-large-light {
     @include btn-large($secondaryTextColor, $accentColor_tomato-light, $secondaryTextColor);
  }
-
+.btn-slider_wrapper {
+    height: min-content;
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap:30px;
+    margin: 0 auto;
+    @include mobile{
+        bottom: 20px;
+        gap: 20px;
+    }
+}
+.btn-slide {
+    width: 20px;
+    height: 20px;
+    background-color: $dotColorInactive;
+    border-radius: 50%;
+    transition: all $transitionFunc;
+    @include tablet{
+        width: 12px;
+        height: 12px;
+    }
+    &:hover, &:focus{
+        background-color: $accentColor_tomato-light;
+    }
+}
 // SECTION PRODUCTS--------------------
 .products .container {
     padding: 50px 50px;
     margin: 0 auto;
-    background-color: aqua;
 }
 .products-wrapper {
     display: flex;
@@ -285,7 +316,7 @@ body.fixed{
 .products-items{
     position: relative;
     // flex-basis: calc((100% - 20px*4) / 5);
-    width: 100%;
+    // width: 100%;
     // height: 100%;
     min-height: 417px;
     min-width: 224px;
