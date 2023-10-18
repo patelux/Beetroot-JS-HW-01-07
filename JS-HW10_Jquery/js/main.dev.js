@@ -1,6 +1,73 @@
 "use strict";
 
-$(function () {
+$(document).ready(function () {
+  $('.products-list').slick({
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    infinite: true,
+    dots: false,
+    arrows: true,
+    responsive: [{
+      breakpoint: 1380,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        infinite: true,
+        dots: false,
+        arrows: true
+      }
+    }, {
+      breakpoint: 968,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 1,
+        dots: true,
+        arrows: true
+      }
+    }, {
+      breakpoint: 768,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        dots: true,
+        arrows: false
+      }
+    }]
+  });
+  $('.partners-list').slick({
+    slidesToShow: 8,
+    slidesToScroll: 1,
+    infinite: true,
+    dots: false,
+    arrows: true,
+    responsive: [{
+      breakpoint: 1200,
+      settings: {
+        slidesToShow: 6,
+        slidesToScroll: 1,
+        infinite: true,
+        dots: false,
+        arrows: true
+      }
+    }, {
+      breakpoint: 768,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 1,
+        dots: true,
+        arrows: false
+      }
+    }, {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        dots: true,
+        arrows: false
+      }
+    }]
+  });
+
   function toggleMenu(e) {
     e.preventDefault();
     $('body').toggleClass('fixed');
@@ -62,75 +129,5 @@ $(function () {
 
     ;
     $('.hero .section-title').text(textContents[currentIndex]);
-  }); // $('.products-list').slick({
-  //         vertical: false,
-  //         arrows: true,
-  //         dots: true,
-  //         infinite: true,
-  //         speed: 300,
-  //         slidesToShow: 5,
-  //         slidesToScroll: 5,
-  //   responsive: [
-  //     {
-  //       breakpoint: 1199,
-  //       settings: {
-  //         slidesToShow: 5,
-  //         slidesToScroll: 1,
-  //         infinite: true,
-  //         dots: true
-  //       }
-  //     },
-  //     {
-  //       breakpoint: 767,
-  //       settings: {
-  //         slidesToShow: 3,
-  //         slidesToScroll: 1,
-  //         arrows: false
-  //       }
-  //     },
-  //     {
-  //       breakpoint: 320,
-  //       settings: {
-  //         slidesToShow: 1,
-  //         slidesToScroll: 1,
-  //         arrows: false
-  //       }
-  //     }
-  //   ]
-  // });
-
-  $(function () {
-    $('.partners-list').slick({
-      vertical: false,
-      arrows: true,
-      dots: true,
-      infinite: true,
-      speed: 300,
-      slidesToShow: 5,
-      slidesToScroll: 1,
-      responsive: [{
-        breakpoint: 1199,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 1,
-          infinite: true,
-          dots: true
-        }
-      }, {
-        breakpoint: 767,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          arrows: false
-        }
-      }, {
-        breakpoint: 320,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          arrows: false
-        }
-      }]
-    });
   });
 });
