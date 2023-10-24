@@ -1,0 +1,65 @@
+@import './base/reset';
+
+@import './utils/variables';
+
+@import './utils/mixins';
+
+@import './components/container';
+
+.page_wrapper{
+    margin: 0 auto;
+    position: relative;
+    text-align: center;
+}
+.forecast .container{
+    padding: 100px 10px;
+}
+.forecsat_list {
+    width: 100%;
+    max-width: 1170px;
+    font-size: 0;
+    margin: 0 auto;
+}
+
+.forecast_item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: rgba(#fff, 0.7);
+    font-size: 22px;
+    gap: 30px;
+    padding: 50px 50px;
+    border-radius: 10px;
+
+}
+.forecast_item:nth-of-type(1) {
+    background-color: #3399CC;
+}
+
+.forecast_item {
+    .img-wrapper{
+        display: inline-block;
+        width: 80px;
+        height: 80px;
+        background-color: transparent;
+        color:$accentColor_tomato-light;
+    }
+    &:not(:last-of-type) {
+    margin-bottom: 19px;
+}}
+
+.forecast_item i {
+    margin-left: 4px;
+}
+.forecast_item-description{
+    font-size: 34px;
+}
+.forecast_item-capital {
+    text-transform: capitalize;
+}
+
+.forecast_item-temperature {
+    opacity: 1;
+}
+

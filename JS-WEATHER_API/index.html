@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
+    <title>Weather API</title>
+
+    <link rel="stylesheet" href="./styles/main.css">
+</head>
+
+<body>
+    <div class="page_wrapper">
+        <main class="main">
+            <sectiion class="forecast">
+                <div class="container">
+                    <div class="forecsat_list" id="forecsat_list">
+                        <div class="forecast_item">
+                            <div class="img-wrapper">
+                                <img id="weather-icon" src="" alt="Weather Icon">
+                            </div>
+                            <p class="forecast_item-description" id="weather-description">
+                            </p>
+                            <p class="forecast_item-capital" id="city"></p>
+                            <p class="forecast_item-temperature" id="temperature"></p>
+                            <p class="forecast_item-temperature" id="feels-like"></p>
+                        </div>
+                    </div>
+                </div>
+            </sectiion>
+        </main>
+    </div>
+
+    <script src="./js/main.js"></script>
+</body>
+
+</html>

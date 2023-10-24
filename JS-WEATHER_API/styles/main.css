@@ -1,0 +1,118 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body, html {
+  width: 100%;
+  height: 100%;
+}
+
+ul,
+ol,
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+img {
+  display: block;
+  width: 100%;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  display: block;
+}
+
+input, button {
+  outline: none;
+  border: none;
+  background-color: transparent;
+}
+
+body {
+  color: #000;
+  background-color: #FFF;
+  text-align: left;
+  font-family: "Montserrat", sans-serif;
+  font-size: 18px;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  position: relative;
+  width: 90%;
+  max-width: 1320px;
+  margin: 0 auto;
+}
+
+.page_wrapper {
+  margin: 0 auto;
+  position: relative;
+  text-align: center;
+}
+
+.forecast .container {
+  padding: 100px 10px;
+}
+
+.forecsat_list {
+  width: 100%;
+  max-width: 1170px;
+  font-size: 0;
+  margin: 0 auto;
+}
+
+.forecast_item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 22px;
+  gap: 30px;
+  padding: 50px 50px;
+  border-radius: 10px;
+}
+
+.forecast_item:nth-of-type(1) {
+  background-color: #3399CC;
+}
+
+.forecast_item .img-wrapper {
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+  background-color: transparent;
+  color: #F16A50;
+}
+.forecast_item:not(:last-of-type) {
+  margin-bottom: 19px;
+}
+
+.forecast_item i {
+  margin-left: 4px;
+}
+
+.forecast_item-description {
+  font-size: 34px;
+}
+
+.forecast_item-capital {
+  text-transform: capitalize;
+}
+
+.forecast_item-temperature {
+  opacity: 1;
+}
