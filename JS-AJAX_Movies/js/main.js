@@ -1,5 +1,5 @@
 // apikey=1c39f51b //9f5304c4
-const url = 'http://www.omdbapi.com/?apikey=9f5304c4';
+const url = 'https://www.omdbapi.com/?apikey=1c39f51b';
 // const url = `https://api.themoviedb.org/3/search/movie?api_key=2463514ee2e145bc819726cf4aea003e`
 
 // add novie details card
