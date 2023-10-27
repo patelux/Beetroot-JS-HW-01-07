@@ -8,8 +8,8 @@ function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.
 
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
 
-// apikey=1c39f51b
-var url = 'http://www.omdbapi.com/?apikey=1c39f51b'; // const url = `https://api.themoviedb.org/3/search/movie?api_key=2463514ee2e145bc819726cf4aea003e`
+// apikey=1c39f51b //9f5304c4
+var url = 'http://www.omdbapi.com/?apikey=9f5304c4'; // const url = `https://api.themoviedb.org/3/search/movie?api_key=2463514ee2e145bc819726cf4aea003e`
 // add novie details card
 
 var cardUrl = './parts/card.html';
