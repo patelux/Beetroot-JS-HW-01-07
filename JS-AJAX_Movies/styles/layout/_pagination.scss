@@ -1,0 +1,51 @@
+/* //   Розмітка пагінації */
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  cursor: pointer;
+}
+.pagination__item {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: calc(16 / 12);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #ff6b01;
+  border-radius: 5px;
+  color: #ff6b01;
+  background-color: transparent;
+  padding: 10px;
+  transition: all 0.3s ease;
+}
+  .pagination__item:hover, .pagination__item:focus {
+    transform: scale(1.1);
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
+    .page-link{
+      background-color: transparent;
+      color: inherit;
+    } 
+  }
+      
+  .pagination__item{
+    .page-link.active{
+      color: rgba(0, 0, 0, 0.7);
+      background-color: transparent
+    }
+  }
+  .pagination__item.hidden { 
+    opacity: 0; 
+    visibility: hidden; 
+    pointer-events: none; 
+    display: none; 
+  }
+  .page-link{
+    width: 100%;
+    border: none;
+    color: inherit;
+    padding: 6px;
+  }
