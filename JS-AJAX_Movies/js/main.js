@@ -35,7 +35,7 @@ let page = 1;
 let totalResults = 0;
 let currentPage = 1;
 let countPages = 0;
-
+const listArr = [];
 let typesOfMovies = document.getElementsByName('type');
 type = (document.querySelector('input[name="type"]:checked')).getAttribute('id');
 
@@ -155,8 +155,6 @@ function getFilmById(id, getMovie) {
         });
 }
 
-const listArr = [];
-
 function addToWishList(e) {
     const filmItem = {
         id: e.target.dataset.id,
@@ -180,41 +178,51 @@ function addToWishList(e) {
         });
     }
     if (!isIncludedToWishList) {
-        listArr.push(JSON.stringify(filmItem));
+    listArr.push(JSON.stringify(filmItem));
     }
     localStorage.setItem('watchList', listArr);
     generateWatchList();
+    listNotFound.classList.add('d-none');
 }
 
-// function removeFromWishList(e) {
-//     const filmItem = {
-//         id: e.target.dataset.id,
-//         name: e.target.dataset.name
-//     };
-//     const tid = filmItem.id;
-//     console.log(tid);
-// let isIncludedToWishList = false;
-// const filmsFromStorage = localStorage.getItem('watchList');
-// if(filmsFromStorage){
-//     const formatedArr = filmsFromStorage.split('},').map((el, index) => {
-//     if (index < list.length - 1) {
-//         return el + '}'
-//     }
-//     return el;
-// });
-// formatedArr.forEach(film => {
-//     if (film.includes(`${tid}`)) {
-//         return isIncludedToWishList = true;
-//     }
-// });}
-//     if(!isIncludedToWishList){listArr.push(JSON.stringify(filmItem));}
-//     localStorage.setItem('watchList', listArr);
-//     generateWatchList();    
-// }
+function removeFromWishList(e) {
+    const filmItem = {
+        id: e.target.dataset.id,
+        name: e.target.dataset.name
+    };
+    const tid = filmItem.id;
+    console.log(tid);
+
+    const filmsFromStorage = localStorage.getItem('watchList');
+    const formatedArr = filmsFromStorage.split('},').map((el, index) => {
+        if (index < list.length - 1) {
+            return el + '}'
+        }
+        return el;
+    });
+    let indexToRemove;
+
+    formatedArr.forEach((film, index) => {
+        if (film.includes(`${tid}`)) {
+            indexToRemove = index;
+        }
+    });
+    console.log(indexToRemove);
+    console.log('before:', listArr);
+    console.log(listArr.splice(indexToRemove, 1));
+    console.log('after:', listArr);
+    listArr.splice(indexToRemove, 1);    
+    localStorage.setItem('watchList', listArr);
+    generateWatchList();
+    showWatchList(e, watchList);
+}
 
 function generateWatchList() {
-    listNotFound.classList.add('d-none');
     const listfromStorage = localStorage.getItem('watchList');
+    if(!listfromStorage) {
+        listNotFound.classList.add('d-none');
+        return false;
+    }
     if (listfromStorage) {
         const list = listfromStorage.split('},');
         const formatedArr = list.map((el, index) => {
@@ -235,13 +243,12 @@ function generateWatchList() {
         </li>
         `;
         });
-    document.getElementById('watchlist').innerHTML = html;
-    const buttons = document.getElementById('watchlist').querySelectorAll('.btn');
-    buttons.forEach(button => {
-        button.addEventListener('click', getMovie);
-    })} else {
-        console.log('no films in wishlist');
-    }
+        document.getElementById('watchlist').innerHTML = html;
+        const buttons = document.getElementById('watchlist').querySelectorAll('.btn');
+        buttons.forEach(button => {
+            button.addEventListener('click', getMovie);
+        })
+    } 
 }
 
 document.addEventListener('DOMContentLoaded', generateWatchList);
@@ -251,17 +258,21 @@ document.getElementById('watchLater').addEventListener('click', (event) => showW
 
 function showWatchList(event, el) {
     event.preventDefault();
-
-    if (el.children.length === 0) {listNotFound.classList.toggle('d-none');}
+    console.log(el.children.length);
+    if (el.children.length === 0) {
+        listNotFound.classList.remove('d-none');
+    } else {
+        listNotFound.classList.add('d-none');
+    }
     el.classList.toggle("d-none");
 }
 
 // close details
 function closeCardInfo(event) {
-    event.preventDefault();
     cardBlock.classList.add('d-none');
     cardBlock.classList.remove('menu-open');
     document.body.classList.remove('fixed');
+    generateWatchList();
 }
 //   ----------------------------------
 
@@ -272,11 +283,14 @@ function showCard(movie) {
         document.body.classList.add('fixed');
 
         const button = cardBlock.querySelector('.button__to_wishlist');
+        const buttonRemove = cardBlock.querySelector('.button__from_wishlist');
 
         button.setAttribute('data-id', movie.imdbID);
+        buttonRemove.setAttribute('data-id', movie.imdbID);
         button.setAttribute('data-name', movie.Title);
 
         button.addEventListener('click', addToWishList);
+        buttonRemove.addEventListener('click', removeFromWishList);
 
         const title = document.getElementById('title');
         title.textContent = movie.Title || '';
