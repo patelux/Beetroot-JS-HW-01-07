@@ -156,6 +156,7 @@ function getFilmById(id, getMovie) {
 }
 
 function addToWishList(e) {
+    e.preventDefault();
     const filmItem = {
         id: e.target.dataset.id,
         name: e.target.dataset.name
@@ -163,7 +164,7 @@ function addToWishList(e) {
     const tid = filmItem.id;
     console.log(tid);
     let isIncludedToWishList = false;
-    const filmsFromStorage = localStorage.getItem('watchList');
+    const filmsFromStorage = localStorage.getItem('watchListStore');
     if (filmsFromStorage) {
         const formatedArr = filmsFromStorage.split('},').map((el, index) => {
             if (index < list.length - 1) {
@@ -180,12 +181,13 @@ function addToWishList(e) {
     if (!isIncludedToWishList) {
     listArr.push(JSON.stringify(filmItem));
     }
-    localStorage.setItem('watchList', listArr);
+    localStorage.setItem('watchListStore', listArr);
     generateWatchList();
     listNotFound.classList.add('d-none');
 }
 
 function removeFromWishList(e) {
+    e.preventDefault();
     const filmItem = {
         id: e.target.dataset.id,
         name: e.target.dataset.name
@@ -193,7 +195,7 @@ function removeFromWishList(e) {
     const tid = filmItem.id;
     console.log(tid);
 
-    const filmsFromStorage = localStorage.getItem('watchList');
+    const filmsFromStorage = localStorage.getItem('watchListStore');
     const formatedArr = filmsFromStorage.split('},').map((el, index) => {
         if (index < list.length - 1) {
             return el + '}'
@@ -201,29 +203,25 @@ function removeFromWishList(e) {
         return el;
     });
     let indexToRemove;
-
     formatedArr.forEach((film, index) => {
         if (film.includes(`${tid}`)) {
             indexToRemove = index;
         }
     });
-    console.log(indexToRemove);
-    console.log('before:', listArr);
-    console.log(listArr.splice(indexToRemove, 1));
-    console.log('after:', listArr);
-    listArr.splice(indexToRemove, 1);    
-    localStorage.setItem('watchList', listArr);
+    // console.log('before:', listArr);
+    listArr.splice(indexToRemove, 1); 
+    // console.log('after:', listArr);   
+    localStorage.setItem('watchListStore', listArr);
     generateWatchList();
-    showWatchList(e, watchList);
 }
 
 function generateWatchList() {
-    const listfromStorage = localStorage.getItem('watchList');
-    if(!listfromStorage) {
+    const listfromStorage = localStorage.getItem('watchListStore');
+    if(!listfromStorage || listArr.length < 1) {
         listNotFound.classList.add('d-none');
         return false;
     }
-    if (listfromStorage) {
+    if (listfromStorage || listArr.length >= 1) {
         const list = listfromStorage.split('},');
         const formatedArr = list.map((el, index) => {
             if (index < list.length - 1) {
@@ -254,12 +252,14 @@ function generateWatchList() {
 document.addEventListener('DOMContentLoaded', generateWatchList);
 
 const watchList = document.getElementById('watchlist');
+
 document.getElementById('watchLater').addEventListener('click', (event) => showWatchList(event, watchList));
 
 function showWatchList(event, el) {
     event.preventDefault();
+    
     console.log(el.children.length);
-    if (el.children.length === 0) {
+    if (el.children.length < 1) {
         listNotFound.classList.remove('d-none');
     } else {
         listNotFound.classList.add('d-none');
@@ -267,8 +267,10 @@ function showWatchList(event, el) {
     el.classList.toggle("d-none");
 }
 
+
 // close details
 function closeCardInfo(event) {
+    event.preventDefault();
     cardBlock.classList.add('d-none');
     cardBlock.classList.remove('menu-open');
     document.body.classList.remove('fixed');

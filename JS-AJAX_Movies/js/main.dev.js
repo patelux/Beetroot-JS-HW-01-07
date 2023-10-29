@@ -147,6 +147,7 @@ function getFilmById(id, getMovie) {
 }
 
 function addToWishList(e) {
+  e.preventDefault();
   var filmItem = {
     id: e.target.dataset.id,
     name: e.target.dataset.name
@@ -154,7 +155,7 @@ function addToWishList(e) {
   var tid = filmItem.id;
   console.log(tid);
   var isIncludedToWishList = false;
-  var filmsFromStorage = localStorage.getItem('watchList');
+  var filmsFromStorage = localStorage.getItem('watchListStore');
 
   if (filmsFromStorage) {
     var formatedArr = filmsFromStorage.split('},').map(function (el, index) {
@@ -175,19 +176,20 @@ function addToWishList(e) {
     listArr.push(JSON.stringify(filmItem));
   }
 
-  localStorage.setItem('watchList', listArr);
+  localStorage.setItem('watchListStore', listArr);
   generateWatchList();
   listNotFound.classList.add('d-none');
 }
 
 function removeFromWishList(e) {
+  e.preventDefault();
   var filmItem = {
     id: e.target.dataset.id,
     name: e.target.dataset.name
   };
   var tid = filmItem.id;
   console.log(tid);
-  var filmsFromStorage = localStorage.getItem('watchList');
+  var filmsFromStorage = localStorage.getItem('watchListStore');
   var formatedArr = filmsFromStorage.split('},').map(function (el, index) {
     if (index < list.length - 1) {
       return el + '}';
@@ -200,26 +202,23 @@ function removeFromWishList(e) {
     if (film.includes("".concat(tid))) {
       indexToRemove = index;
     }
-  });
-  console.log(indexToRemove);
-  console.log('before:', listArr);
-  console.log(listArr.splice(indexToRemove, 1));
-  console.log('after:', listArr);
-  listArr.splice(indexToRemove, 1);
-  localStorage.setItem('watchList', listArr);
+  }); // console.log('before:', listArr);
+
+  listArr.splice(indexToRemove, 1); // console.log('after:', listArr);   
+
+  localStorage.setItem('watchListStore', listArr);
   generateWatchList();
-  showWatchList(e, watchList);
 }
 
 function generateWatchList() {
-  var listfromStorage = localStorage.getItem('watchList');
+  var listfromStorage = localStorage.getItem('watchListStore');
 
-  if (!listfromStorage) {
+  if (!listfromStorage || listArr.length < 1) {
     listNotFound.classList.add('d-none');
     return false;
   }
 
-  if (listfromStorage) {
+  if (listfromStorage || listArr.length >= 1) {
     var _list = listfromStorage.split('},');
 
     var formatedArr = _list.map(function (el, index) {
@@ -253,7 +252,7 @@ function showWatchList(event, el) {
   event.preventDefault();
   console.log(el.children.length);
 
-  if (el.children.length === 0) {
+  if (el.children.length < 1) {
     listNotFound.classList.remove('d-none');
   } else {
     listNotFound.classList.add('d-none');
@@ -264,6 +263,7 @@ function showWatchList(event, el) {
 
 
 function closeCardInfo(event) {
+  event.preventDefault();
   cardBlock.classList.add('d-none');
   cardBlock.classList.remove('menu-open');
   document.body.classList.remove('fixed');
