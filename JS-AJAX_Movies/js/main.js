@@ -81,10 +81,10 @@ function addListMoviesToDocument(listMovies) {
 
     if (listMovies.length) {
         listMovies.forEach(item => {
-            list.innerHTML += `<li class="list-group-item d-flex justify-content-between align-items-center">
-                <img style="width: 100px" src="${item.Poster}">
+            list.innerHTML += `<li class="list-group-item">
+                <img src="${item.Poster}">
                 <h2 class="h5">${item.Title} (${item.Year})</h2>
-                <button type="button text-right" class="btn btn-info" id="${item.imdbID}" onclick="getMovie(event)">
+                <button type="button" class="btn btn-info" id="${item.imdbID}" onclick="getMovie(event)">
                     Details
                 </button>
             </li> `;
@@ -143,7 +143,7 @@ function getFilmById(id, getMovie) {
         .then(function (response) {
             if (response.data.Response === "True") {
                 findMovie = response.data;
-                showCard(findMovie,getMovie);
+                showCard(findMovie, getMovie);
             } else {
                 onCatch(response.Error);
             }
@@ -152,43 +152,38 @@ function getFilmById(id, getMovie) {
             onCatch(error.response.message);
         });
 }
+
 const listArr = [];
+
 function addToWishList(e) {
     const filmItem = {
         id: e.target.dataset.id,
         name: e.target.dataset.name
     };
-    listArr.push(JSON.stringify(filmItem))
-    localStorage.setItem('watchList', listArr);
 
-    generateWatchList();
+    const tid = filmItem.id;
+    let isIncludedToWishList = false;
+    const filmsFromStorage = localStorage.getItem('watchList');
+    if(filmsFromStorage){
+        const formatedArr = filmsFromStorage.split('},').map((el, index) => {
+        if (index < list.length - 1) {
+            return el + '}'
+        }
+        return el;
+    });
+    formatedArr.forEach(film => {
+        if (film.includes(`${tid}`)) {
+            return isIncludedToWishList = true;
+        }
+    });}
+        if(!isIncludedToWishList){listArr.push(JSON.stringify(filmItem));}
+        localStorage.setItem('watchList', listArr);
+        generateWatchList();    
 }
-// function  removeFromWishList(e) {
-//     const itemId = e.target.dataset.id;
-
-//     // Получаем данные из локального хранилища и преобразуем их из JSON
-//     // const storedData = localStorage.getItem('watchList');
-//     const userData = JSON.parse(localStorage.getItem('watchList'));
-//     console.log(userData);
-
-//     // // Находим индекс элемента с нужным id в массиве userData
-//     // const index = userData.findIndex(item => item.id === itemId);
-
-//     // // Если индекс найден, удаляем элемент из массива
-//     // if (index !== -1) {
-//     //     listArr.splice(index, 1);
-//     //     console.log(remove);
-//     //     // Обновляем локальное хранилище после удаления элемента
-//     //     localStorage.setItem('watchList', JSON.stringify(listArr));
-
-//     //     // Перегенерируйте список после удаления элемента (вызов функции генерации списка)
-//     //     generateWatchList();
-//     // }
-// }
 
 function generateWatchList() {
     const list = localStorage.getItem('watchList').split('},');
-
+    // ------------------------------
     const formatedArr = list.map((el, index) => {
         if (index < list.length - 1) {
             return el + '}'
@@ -201,9 +196,9 @@ function generateWatchList() {
     formatedArr.forEach(film => {
         const parsedFilm = JSON.parse(film);
         html += `
-        <li class="list-group-item d-flex justify-content-between align-items-center">
+        <li class="list-group-item">
             <h2 class="h5" id="details">${parsedFilm.name}</h2>
-            <button type="button text-right" class="btn btn-info" id="${parsedFilm.id}" onclick="getMovie(event, true)">
+            <button type="button" class="btn btn-info" id="${parsedFilm.id}" onclick="getMovie(event, true)">
                 Details
             </button>
         </li>
@@ -229,33 +224,27 @@ function showWatchList(event, el) {
 }
 
 // close details
-    function closeCardInfo(event) {
-        event.preventDefault();
-        cardBlock.classList.add('d-none');
-    }
+function closeCardInfo(event) {
+    event.preventDefault();
+    cardBlock.classList.add('d-none');
+    cardBlock.classList.remove('menu-open');
+    document.body.classList.remove('fixed');
+}
 //   ----------------------------------
 
-function showCard(movie, isAddedToWatchList) {
+function showCard(movie) {
     if (movie) {
         cardBlock.classList.remove('d-none');
-        cardBlock.classList.toggle('menu-open');
-        document.body.classList.toggle('fixed');
+        cardBlock.classList.add('menu-open');
+        document.body.classList.add('fixed');
 
         const button = cardBlock.querySelector('.button__to_wishlist');
 
         button.setAttribute('data-id', movie.imdbID);
         button.setAttribute('data-name', movie.Title);
-        console.log(isAddedToWatchList);
-         
-        // if(isAddedToWatchList) {
-        //     console.log('удаляем из локалсторидж');
-        //     button.textContent = "Remove from wishlist";
-        //     button.addEventListener('click', removeFromWishList);
-        // }
-        if(!isAddedToWatchList || isAddedToWatchList === undefined){
-                button.addEventListener('click', addToWishList);
-                console.log('элемент не в локалсторидж');
-        }
+
+        button.addEventListener('click', addToWishList);
+
         const title = document.getElementById('title');
         title.textContent = movie.Title || '';
 

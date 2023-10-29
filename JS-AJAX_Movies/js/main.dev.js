@@ -84,7 +84,7 @@ function addListMoviesToDocument(listMovies) {
 
   if (listMovies.length) {
     listMovies.forEach(function (item) {
-      list.innerHTML += "<li class=\"list-group-item d-flex justify-content-between align-items-center\">\n                <img style=\"width: 100px\" src=\"".concat(item.Poster, "\">\n                <h2 class=\"h5\">").concat(item.Title, " (").concat(item.Year, ")</h2>\n                <button type=\"button text-right\" class=\"btn btn-info\" id=\"").concat(item.imdbID, "\" onclick=\"getMovie(event)\">\n                    Details\n                </button>\n            </li> ");
+      list.innerHTML += "<li class=\"list-group-item\">\n                <img src=\"".concat(item.Poster, "\">\n                <h2 class=\"h5\">").concat(item.Title, " (").concat(item.Year, ")</h2>\n                <button type=\"button\" class=\"btn btn-info\" id=\"").concat(item.imdbID, "\" onclick=\"getMovie(event)\">\n                    Details\n                </button>\n            </li> ");
     });
   }
 }
@@ -151,31 +151,36 @@ function addToWishList(e) {
     id: e.target.dataset.id,
     name: e.target.dataset.name
   };
-  listArr.push(JSON.stringify(filmItem));
+  var tid = filmItem.id;
+  var isIncludedToWishList = false;
+  var filmsFromStorage = localStorage.getItem('watchList');
+
+  if (filmsFromStorage) {
+    var formatedArr = filmsFromStorage.split('},').map(function (el, index) {
+      if (index < list.length - 1) {
+        return el + '}';
+      }
+
+      return el;
+    });
+    formatedArr.forEach(function (film) {
+      if (film.includes("".concat(tid))) {
+        return isIncludedToWishList = true;
+      }
+    });
+  }
+
+  if (!isIncludedToWishList) {
+    listArr.push(JSON.stringify(filmItem));
+  }
+
   localStorage.setItem('watchList', listArr);
   generateWatchList();
-} // function  removeFromWishList(e) {
-//     const itemId = e.target.dataset.id;
-//     // Получаем данные из локального хранилища и преобразуем их из JSON
-//     // const storedData = localStorage.getItem('watchList');
-//     const userData = JSON.parse(localStorage.getItem('watchList'));
-//     console.log(userData);
-//     // // Находим индекс элемента с нужным id в массиве userData
-//     // const index = userData.findIndex(item => item.id === itemId);
-//     // // Если индекс найден, удаляем элемент из массива
-//     // if (index !== -1) {
-//     //     listArr.splice(index, 1);
-//     //     console.log(remove);
-//     //     // Обновляем локальное хранилище после удаления элемента
-//     //     localStorage.setItem('watchList', JSON.stringify(listArr));
-//     //     // Перегенерируйте список после удаления элемента (вызов функции генерации списка)
-//     //     generateWatchList();
-//     // }
-// }
-
+}
 
 function generateWatchList() {
-  var list = localStorage.getItem('watchList').split('},');
+  var list = localStorage.getItem('watchList').split('},'); // ------------------------------
+
   var formatedArr = list.map(function (el, index) {
     if (index < list.length - 1) {
       return el + '}';
@@ -186,7 +191,7 @@ function generateWatchList() {
   var html = '';
   formatedArr.forEach(function (film) {
     var parsedFilm = JSON.parse(film);
-    html += "\n        <li class=\"list-group-item d-flex justify-content-between align-items-center\">\n            <h2 class=\"h5\" id=\"details\">".concat(parsedFilm.name, "</h2>\n            <button type=\"button text-right\" class=\"btn btn-info\" id=\"").concat(parsedFilm.id, "\" onclick=\"getMovie(event, true)\">\n                Details\n            </button>\n        </li>\n        ");
+    html += "\n        <li class=\"list-group-item\">\n            <h2 class=\"h5\" id=\"details\">".concat(parsedFilm.name, "</h2>\n            <button type=\"button\" class=\"btn btn-info\" id=\"").concat(parsedFilm.id, "\" onclick=\"getMovie(event, true)\">\n                Details\n            </button>\n        </li>\n        ");
   });
   document.getElementById('watchlist').innerHTML = html;
   var buttons = document.getElementById('watchlist').querySelectorAll('.btn');
@@ -210,28 +215,20 @@ function showWatchList(event, el) {
 function closeCardInfo(event) {
   event.preventDefault();
   cardBlock.classList.add('d-none');
+  cardBlock.classList.remove('menu-open');
+  document.body.classList.remove('fixed');
 } //   ----------------------------------
 
 
-function showCard(movie, isAddedToWatchList) {
+function showCard(movie) {
   if (movie) {
     cardBlock.classList.remove('d-none');
-    cardBlock.classList.toggle('menu-open');
-    document.body.classList.toggle('fixed');
+    cardBlock.classList.add('menu-open');
+    document.body.classList.add('fixed');
     var button = cardBlock.querySelector('.button__to_wishlist');
     button.setAttribute('data-id', movie.imdbID);
     button.setAttribute('data-name', movie.Title);
-    console.log(isAddedToWatchList); // if(isAddedToWatchList) {
-    //     console.log('удаляем из локалсторидж');
-    //     button.textContent = "Remove from wishlist";
-    //     button.addEventListener('click', removeFromWishList);
-    // }
-
-    if (!isAddedToWatchList || isAddedToWatchList === undefined) {
-      button.addEventListener('click', addToWishList);
-      console.log('элемент не в локалсторидж');
-    }
-
+    button.addEventListener('click', addToWishList);
     var title = document.getElementById('title');
     title.textContent = movie.Title || '';
     var year = document.getElementById('year');
