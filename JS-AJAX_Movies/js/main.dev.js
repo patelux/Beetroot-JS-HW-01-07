@@ -201,10 +201,10 @@ function removeFromWishList(e) {
   formatedArr.forEach(function (film, index) {
     if (film.includes("".concat(tid))) {
       indexToRemove = index;
+      listArr.splice(indexToRemove, 1);
     }
   }); // console.log('before:', listArr);
-
-  listArr.splice(indexToRemove, 1); // console.log('after:', listArr);   
+  // console.log('after:', listArr);   
 
   localStorage.setItem('watchListStore', listArr);
   generateWatchList();
@@ -229,10 +229,10 @@ function generateWatchList() {
       return el;
     });
 
-    var html = '';
+    var html = '<li></li>';
     formatedArr.forEach(function (film) {
       var parsedFilm = JSON.parse(film);
-      html += "\n        <li class=\"list-group-item\">\n            <h2 class=\"h5\" id=\"details\">".concat(parsedFilm.name, "</h2>\n            <button type=\"button\" class=\"btn btn-info\" id=\"").concat(parsedFilm.id, "\" onclick=\"getMovie(event, true)\">\n                Details\n            </button>\n        </li>\n        ");
+      html += "\n                <li class=\"list-group-item\">\n                    <h2 class=\"h5\" id=\"details\">".concat(parsedFilm.name, "</h2>\n                    <button type=\"button\" class=\"btn btn-info\" id=\"").concat(parsedFilm.id, "\" onclick=\"getMovie(event, true)\">\n                        Details\n                    </button>\n                </li>\n                ");
     });
     document.getElementById('watchlist').innerHTML = html;
     var buttons = document.getElementById('watchlist').querySelectorAll('.btn');
@@ -250,15 +250,14 @@ document.getElementById('watchLater').addEventListener('click', function (event)
 
 function showWatchList(event, el) {
   event.preventDefault();
-  console.log(el.children.length);
+  console.log('в сторе:', listArr.length);
+  console.log('лишек:', el.children.length);
 
   if (el.children.length < 1) {
-    listNotFound.classList.remove('d-none');
+    listNotFound.classList.toggle('d-none');
   } else {
-    listNotFound.classList.add('d-none');
+    el.classList.toggle("d-none");
   }
-
-  el.classList.toggle("d-none");
 } // close details
 
 
@@ -267,7 +266,6 @@ function closeCardInfo(event) {
   cardBlock.classList.add('d-none');
   cardBlock.classList.remove('menu-open');
   document.body.classList.remove('fixed');
-  generateWatchList();
 } //   ----------------------------------
 
 

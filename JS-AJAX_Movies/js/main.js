@@ -179,7 +179,7 @@ function addToWishList(e) {
         });
     }
     if (!isIncludedToWishList) {
-    listArr.push(JSON.stringify(filmItem));
+        listArr.push(JSON.stringify(filmItem));
     }
     localStorage.setItem('watchListStore', listArr);
     generateWatchList();
@@ -206,10 +206,11 @@ function removeFromWishList(e) {
     formatedArr.forEach((film, index) => {
         if (film.includes(`${tid}`)) {
             indexToRemove = index;
+            listArr.splice(indexToRemove, 1);
         }
     });
     // console.log('before:', listArr);
-    listArr.splice(indexToRemove, 1); 
+    
     // console.log('after:', listArr);   
     localStorage.setItem('watchListStore', listArr);
     generateWatchList();
@@ -217,7 +218,7 @@ function removeFromWishList(e) {
 
 function generateWatchList() {
     const listfromStorage = localStorage.getItem('watchListStore');
-    if(!listfromStorage || listArr.length < 1) {
+    if (!listfromStorage || listArr.length < 1) {
         listNotFound.classList.add('d-none');
         return false;
     }
@@ -229,24 +230,25 @@ function generateWatchList() {
             }
             return el;
         });
-        let html = '';
+        let html = '<li></li>';
         formatedArr.forEach(film => {
-            const parsedFilm = JSON.parse(film);
-            html += `
-        <li class="list-group-item">
-            <h2 class="h5" id="details">${parsedFilm.name}</h2>
-            <button type="button" class="btn btn-info" id="${parsedFilm.id}" onclick="getMovie(event, true)">
-                Details
-            </button>
-        </li>
-        `;
-        });
+                    const parsedFilm = JSON.parse(film);
+                    html += `
+                <li class="list-group-item">
+                    <h2 class="h5" id="details">${parsedFilm.name}</h2>
+                    <button type="button" class="btn btn-info" id="${parsedFilm.id}" onclick="getMovie(event, true)">
+                        Details
+                    </button>
+                </li>
+                `;
+                });
+
         document.getElementById('watchlist').innerHTML = html;
         const buttons = document.getElementById('watchlist').querySelectorAll('.btn');
         buttons.forEach(button => {
             button.addEventListener('click', getMovie);
         })
-    } 
+    }
 }
 
 document.addEventListener('DOMContentLoaded', generateWatchList);
@@ -257,14 +259,13 @@ document.getElementById('watchLater').addEventListener('click', (event) => showW
 
 function showWatchList(event, el) {
     event.preventDefault();
-    
-    console.log(el.children.length);
+    console.log('в сторе:', listArr.length);
+    console.log('лишек:', el.children.length);
     if (el.children.length < 1) {
-        listNotFound.classList.remove('d-none');
+        listNotFound.classList.toggle('d-none');
     } else {
-        listNotFound.classList.add('d-none');
+        el.classList.toggle("d-none");
     }
-    el.classList.toggle("d-none");
 }
 
 
@@ -274,7 +275,6 @@ function closeCardInfo(event) {
     cardBlock.classList.add('d-none');
     cardBlock.classList.remove('menu-open');
     document.body.classList.remove('fixed');
-    generateWatchList();
 }
 //   ----------------------------------
 
