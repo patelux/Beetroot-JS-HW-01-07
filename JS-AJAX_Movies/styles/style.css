@@ -649,11 +649,11 @@ h2.m-5 {
   line-height: 24px;
 }
 
-.card__text_info .button__to_wishlist {
-  padding: 20px 30px;
+.card__text_info .button__to_wishlist, .card__text_info .button__from_wishlist {
+  padding: 10px 10px;
   background: #13E28D;
   border-radius: 2px;
-  font-size: 16px;
+  font-size: 14px;
   line-height: 20px;
   text-transform: uppercase;
   border: 1px solid #13E28D;
@@ -661,7 +661,11 @@ h2.m-5 {
   transition: all 0.8s ease;
 }
 
-.card__text_info .button__to_wishlist:hover {
+.card__text_info .button__from_wishlist {
+  margin-left: 10px;
+}
+
+.card__text_info .button__to_wishlist:hover, .card__text_info .button__from_wishlist:hover {
   border: 1px solid #FFFFFF;
   transform: scale(1.1);
 }
