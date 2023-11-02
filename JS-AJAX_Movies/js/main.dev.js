@@ -182,12 +182,12 @@ function addToWishList(e) {
 }
 
 function removeFromWishList(e) {
-  e.preventDefault();
-  var filmItem = {
-    id: e.target.dataset.id,
-    name: e.target.dataset.name
-  };
-  var tid = filmItem.id;
+  e.preventDefault(); // const filmItem = {
+  //     id: e.target.dataset.id,
+  //     name: e.target.dataset.name
+  // };
+
+  var tid = e.target.dataset.id;
   console.log(tid);
   var filmsFromStorage = localStorage.getItem('watchListStore');
   var formatedArr = filmsFromStorage.split('},').map(function (el, index) {
@@ -200,8 +200,7 @@ function removeFromWishList(e) {
   var indexToRemove;
   formatedArr.forEach(function (film, index) {
     if (film.includes("".concat(tid))) {
-      indexToRemove = index;
-      listArr.splice(indexToRemove, 1);
+      listArr.splice(index, 1);
     }
   }); // console.log('before:', listArr);
   // console.log('after:', listArr);   
@@ -214,7 +213,8 @@ function generateWatchList() {
   var listfromStorage = localStorage.getItem('watchListStore');
 
   if (!listfromStorage || listArr.length < 1) {
-    listNotFound.classList.add('d-none');
+    listNotFound.classList.remove('d-none');
+    document.getElementById('watchlist').innerHTML = "";
     return false;
   }
 

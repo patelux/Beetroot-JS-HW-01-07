@@ -188,11 +188,11 @@ function addToWishList(e) {
 
 function removeFromWishList(e) {
     e.preventDefault();
-    const filmItem = {
-        id: e.target.dataset.id,
-        name: e.target.dataset.name
-    };
-    const tid = filmItem.id;
+    // const filmItem = {
+    //     id: e.target.dataset.id,
+    //     name: e.target.dataset.name
+    // };
+    const tid = e.target.dataset.id;
     console.log(tid);
 
     const filmsFromStorage = localStorage.getItem('watchListStore');
@@ -205,8 +205,7 @@ function removeFromWishList(e) {
     let indexToRemove;
     formatedArr.forEach((film, index) => {
         if (film.includes(`${tid}`)) {
-            indexToRemove = index;
-            listArr.splice(indexToRemove, 1);
+            listArr.splice(index, 1);
         }
     });
     // console.log('before:', listArr);
@@ -219,7 +218,8 @@ function removeFromWishList(e) {
 function generateWatchList() {
     const listfromStorage = localStorage.getItem('watchListStore');
     if (!listfromStorage || listArr.length < 1) {
-        listNotFound.classList.add('d-none');
+        listNotFound.classList.remove('d-none');
+        document.getElementById('watchlist').innerHTML = "";
         return false;
     }
     if (listfromStorage || listArr.length >= 1) {
